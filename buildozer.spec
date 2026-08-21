@@ -1,0 +1,14 @@
+[app]
+title = MeriApp
+package.name = meriapp
+package.domain = org.test
+source.include_exts = py,png,jpg,kv,atlas
+version = 0.1
+requirements = python3,kivy,plyer
+android.permissions = VIBRATE
+orientation = portrait
+icon.filename = %(source.dir)s/icon.png
+
+[buildozer]
+log_level = 2
+warn_on_root = 1
