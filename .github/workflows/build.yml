@@ -24,8 +24,10 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install cython buildozer
+
       - name: Build APK with Buildozer
         run: |
+          yes | sdkmanager "ndk;25.2.9519653" || true
           buildozer -v android debug
 
       - name: Upload APK Artifact
