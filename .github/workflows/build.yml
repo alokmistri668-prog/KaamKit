@@ -26,7 +26,8 @@ jobs:
       - name: Install Buildozer and Cython
         run: |
           pip install --upgrade pip
-          pip install cython buildozer
+          pip install cython
+          pip install --upgrade git+https://github.com/kivy/buildozer.git
           pip install --upgrade git+https://github.com/kivy/python-for-android.git
 
       - name: Build APK with Buildozer
@@ -43,3 +44,4 @@ jobs:
         with:
           name: KaamKit-APK
           path: bin/*.apk
+          
