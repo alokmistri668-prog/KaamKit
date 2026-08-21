@@ -9,7 +9,7 @@ requirements = python3,kivy,plyer
 android.permissions = VIBRATE
 orientation = portrait
 icon.filename = %(source.dir)s/icon.png
-
+android.accept_sdk_license = True
 [buildozer]
 log_level = 2
 warn_on_root = 1
