@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install Buildozer dependencies
+      - name: Install Dependencies
         run: |
           sudo apt update
           sudo apt install -y git zip unzip openjdk-17-jdk
@@ -31,14 +31,7 @@ jobs:
           pip install --upgrade git+https://github.com/kivy/python-for-android.git
 
       - name: Build APK with Buildozer
-        env:
-          ANDROIDSDK: /home/runner/.buildozer/android/platform/android-sdk
-          ANDROIDNDK: /home/runner/.buildozer/android/platform/android-ndk-r25b
-          ANDROID_NDK: /home/runner/.buildozer/android/platform/android-ndk-r25b
-          ANDROID_NDK_HOME: /home/runner/.buildozer/android/platform/android-ndk-r25b
-          ANDROID_NDK_ROOT: /home/runner/.buildozer/android/platform/android-ndk-r25b
         run: |
-          rm -rf .buildozer bin .gradle ~/.buildozer
           buildozer -v android debug
 
       - name: Upload APK Artifact
