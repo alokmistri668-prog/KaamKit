@@ -1,7 +1,7 @@
 [app]
 android.api = 33
 android.min_api = 24
-android.ndk = 25b
+android.ndk_version = 25b
 title = MeriApp
 package.name = meriapp
 package.domain = org.test
