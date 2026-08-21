@@ -8,7 +8,7 @@ package.domain = org.test
 source.include_exts = py,png,jpg,kv,atlas
 source.dir = .
 version = 0.1
-requirements = python3==3.10,kivy,plyer
+requirements = python3=3.10,kivy,plyer
 android.permissions = VIBRATE
 orientation = portrait
 icon.filename = %(source.dir)s/icon.png
