@@ -1,0 +1,22 @@
+workflows:
+  android-build:
+    name: Build KaamKit APK
+    instance_type: linux_x2
+    environment:
+      groups:
+        - android_sdk
+      vars:
+        BUILD_TOOLS: "33.0.0"
+        NDK_VERSION: "26.1.10909125"
+    scripts:
+      - name: Install dependencies
+        script: |
+          sudo apt-get update
+          sudo apt-get install -y git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
+          pip3 install --user --upgrade buildozer cython
+      - name: Build APK
+        script: |
+          buildozer android debug
+    artifacts:
+      - bin/*.apk
+      
