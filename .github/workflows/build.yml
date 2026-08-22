@@ -2,7 +2,9 @@ name: Build APK
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -21,16 +23,27 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            git zip unzip openjdk-17-jdk \
+            git \
+            zip \
+            unzip \
+            openjdk-17-jdk \
             python3-pip \
-            autoconf automake libtool pkg-config \
-            zlib1g-dev libncurses5-dev libncursesw5-dev \
-            cmake libffi-dev libssl-dev \
-            gettext autopoint
+            autoconf \
+            automake \
+            libtool \
+            pkg-config \
+            zlib1g-dev \
+            libncurses5-dev \
+            libncursesw5-dev \
+            cmake \
+            libffi-dev \
+            libssl-dev \
+            gettext \
+            autopoint
 
-      - name: Install Buildozer
+      - name: Install Python build tools
         run: |
-          python -m pip install --upgrade pip
+          python -m pip install --upgrade pip setuptools wheel
           python -m pip install "Cython<3"
           python -m pip install buildozer
 
@@ -43,3 +56,4 @@ jobs:
         with:
           name: MeriApp-APK
           path: bin/*.apk
+          if-no-files-found: error
