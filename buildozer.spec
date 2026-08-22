@@ -1,18 +1,22 @@
 [app]
-android.api = 33
-android.min_api = 24
-android.ndk_version = 25b
 title = MeriApp
 package.name = meriapp
 package.domain = org.test
-source.include_exts = py,png,jpg,kv,atlas
+
 source.dir = .
+source.include_exts = py,png,jpg,kv,atlas
+
 version = 0.1
-requirements = python3=3.10,kivy,plyer
-android.permissions = VIBRATE
+
+requirements = python3==3.10.11,hostpython3==3.10.11,kivy,plyer
+
 orientation = portrait
+
 icon.filename = %(source.dir)s/icon.png
-android.accept_sdk_license = True
+
+android.api = 35
+android.minapi = 24
+
 [buildozer]
 log_level = 2
 warn_on_root = 1
