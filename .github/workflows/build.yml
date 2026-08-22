@@ -44,7 +44,7 @@ jobs:
       - name: Install Python build tools
         run: |
           python -m pip install --upgrade pip setuptools wheel
-          python -m pip install "Cython<3"
+          python -m pip install "Cython==0.29.36"
           python -m pip install buildozer
 
       - name: Build APK
@@ -57,3 +57,4 @@ jobs:
           name: MeriApp-APK
           path: bin/*.apk
           if-no-files-found: error
+          
