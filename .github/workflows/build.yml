@@ -34,27 +34,9 @@ jobs:
           python -m pip install "Cython<3"
           python -m pip install buildozer
 
-      - name: Prepare Buildozer Android SDK
+      - name: Build APK
         run: |
-          buildozer -v android debug 2>&1 | tee build.log &
-          BUILDOZER_PID=$!
-
-          for i in {1..120}; do
-            if find "$HOME/.buildozer/android/platform" -name sdkmanager -type f 2>/dev/null | grep -q sdkmanager; then
-              break
-            fi
-            sleep 5
-          done
-
-          SDKMANAGER=$(find "$HOME/.buildozer/android/platform" -name sdkmanager -type f 2>/dev/null | head -n 1)
-
-          if [ -n "$SDKMANAGER" ]; then
-            SDK_ROOT=$(dirname "$(dirname "$(dirname "$SDKMANAGER")")")
-            yes | "$SDKMANAGER" --licenses || true
-            "$SDKMANAGER" "platform-tools" "platforms;android-35" "build-tools;35.0.0"
-          fi
-
-          wait $BUILDOZER_PID
+          buildozer -v android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
