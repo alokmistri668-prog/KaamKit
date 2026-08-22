@@ -11,7 +11,6 @@ version = 0.1
 requirements = python3==3.10.11,hostpython3==3.10.11,kivy,plyer
 
 orientation = portrait
-
 icon.filename = %(source.dir)s/icon.png
 
 android.api = 33
